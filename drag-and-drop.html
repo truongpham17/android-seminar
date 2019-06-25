@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Drag and drop</title>
+    </head>
+  <body style="text-align: center">
+    <h1 style="text-align: center">Drag demo</h1>
+    <div style="text-align:center">
+      <button onclick="playPause()">Play/Pause</button>
+      <button onclick="makeBig()">Big</button>
+      <button onclick="makeSmall()">Small</button>
+      <button onclick="makeNormal()">Normal</button>
+      <br /><br />
+      <div id="mVideo1">
+
+      <video id="mVideo" width="320" height="180" controls draggable="true" ondragstart="drag(event)">
+        <source src="video.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+      <div id="mVideo2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+  
+
+    <script>
+      const mVideo = document.getElementById("mVideo");
+      function playPause() {
+        if (mVideo.paused) {
+          mVideo.play();
+        } else {
+          mVideo.pause();
+        }
+      }
+
+      function makeBig() {
+        mVideo.width = 600;
+      }
+
+      function makeSmall() {
+        mVideo.width = 200;
+      }
+
+      function makeNormal() {
+        mVideo.width = 320;
+      }
+
+        function allowDrop(ev) {
+        ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+
+    </script>
+  </body>
+  <style>
+        #mVideo2, #mVideo1 {
+          width: 320px;
+          height: 180px;
+          border: 1px solid #aaaaaa;
+          display: inline-block;
+        }
+</style>
+</html>
+
+

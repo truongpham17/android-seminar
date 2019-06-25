@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Video Demo</title>
+    </head>
+  <body>
+    <h1 style="text-align: center">Video demo</h1>
+    <div style="text-align:center">
+      <button onclick="playPause()">Play/Pause</button>
+      <button onclick="makeBig()">Big</button>
+      <button onclick="makeSmall()">Small</button>
+      <button onclick="makeNormal()">Normal</button>
+      <br /><br />
+      <video id="mVideo" width="320" controls>
+        <source src="video.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <script>
+      const mVideo = document.getElementById("mVideo");
+      function playPause() {
+        if (mVideo.paused) {
+          mVideo.play();
+        } else {
+          mVideo.pause();
+        }
+      }
+
+      function makeBig() {
+        mVideo.width = 600;
+      }
+
+      function makeSmall() {
+        mVideo.width = 200;
+      }
+
+      function makeNormal() {
+        mVideo.width = 320;
+      }
+    </script>
+  </body>
+</html>
