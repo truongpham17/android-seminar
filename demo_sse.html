@@ -8,7 +8,8 @@
 
   <script>
     if (typeof (EventSource) !== "undefined") {
-      var source = new EventSource("demo_sse.php");
+      var source = new EventSource("http://127.0.0.1:8888");
+      console.log(source)
       source.onmessage = function (event) {
         document.getElementById("result").innerHTML += event.data + "<br>";
       };
